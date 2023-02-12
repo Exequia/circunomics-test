@@ -4,7 +4,7 @@ import { Update } from '@ngrx/entity';
 import { Speaker } from './speaker.model';
 
 export const loadSpeakers = createAction(
-  '[Speaker/API] Load Speakers', 
+  '[Speaker/API] Load Speakers',
   props<{ speakers: Speaker[] }>()
 );
 
@@ -48,6 +48,15 @@ export const deleteSpeakers = createAction(
   props<{ ids: string[] }>()
 );
 
-export const clearSpeakers = createAction(
-  '[Speaker/API] Clear Speakers'
+export const clearSpeakers = createAction('[Speaker/API] Clear Speakers');
+
+const getSpeakers = '[Speaker/API] Get Speakers API Data';
+export const getSpeakersData = createAction(getSpeakers);
+export const getSpeakersDataSuccess = createAction(
+  `${getSpeakers} success`,
+  props<{ speakers: Speaker[] }>()
+);
+export const getSpeakersDataFail = createAction(
+  `${getSpeakers} fail`,
+  props<{ error: string }>()
 );

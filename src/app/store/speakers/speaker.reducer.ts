@@ -1,6 +1,7 @@
 import {
   ActionReducer,
   ActionReducerMap,
+  createFeatureSelector,
   createReducer,
   MetaReducer,
   on,
@@ -11,6 +12,8 @@ import * as SpeakerActions from './speaker.actions';
 import { isDevMode } from '@angular/core';
 
 export const speakersFeatureKey = 'speakers';
+export const selectGamePlayerState =
+  createFeatureSelector<SpeakerState>(speakersFeatureKey);
 
 export interface SpeakerState extends EntityState<Speaker> {
   // additional entities state properties
@@ -55,8 +58,12 @@ export const speakerReducer = createReducer(
   on(SpeakerActions.clearSpeakers, (state) => speakerAdapter.removeAll(state))
 );
 
-export const { selectIds, selectEntities, selectAll, selectTotal } =
-  speakerAdapter.getSelectors();
+export const {
+  selectIds,
+  selectEntities: selectSpeakersEntities,
+  selectAll: selectSpeakersAll,
+  selectTotal,
+} = speakerAdapter.getSelectors(selectGamePlayerState);
 
 export interface AppState {
   speakers: SpeakerState;

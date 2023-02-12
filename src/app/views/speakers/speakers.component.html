@@ -1,1 +1,3 @@
 <p>speakers works!</p>
+<!-- length: {{ (speakers$ | async)?.length }} -->
+<pre *ngIf="speakers$ | async; let speakers">data: {{ speakers | json }}</pre>
