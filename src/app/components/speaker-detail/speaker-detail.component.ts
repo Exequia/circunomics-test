@@ -6,8 +6,6 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './speaker-detail.component.html',
-  styleUrls: ['./speaker-detail.component.scss']
+  styleUrls: ['./speaker-detail.component.scss'],
 })
-export class SpeakerDetailComponent {
-
-}
+export class SpeakerDetailComponent {}

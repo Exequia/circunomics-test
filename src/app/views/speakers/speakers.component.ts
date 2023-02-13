@@ -2,9 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Store } from '@ngrx/store';
 import {
-  AppState,
   selectSpeakersAll,
-  selectSpeakersEntities,
   SpeakerState,
 } from 'src/app/store/speakers/speaker.reducer';
 import { SpeakerListComponent } from 'src/app/components/speaker-list/speaker-list.component';
