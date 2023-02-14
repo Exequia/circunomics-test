@@ -18,7 +18,6 @@ export class SpeakerSummaryComponent {
   constructor(private readonly store: Store<SpeakerState>) {}
 
   select() {
-    // TODO: ARE - NAVIGATE;
     const speakerId: string = this.speaker?.id as string;
     this.store.dispatch(goToSpeakerDetail({ speakerId }));
   }

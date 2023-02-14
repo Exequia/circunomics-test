@@ -1,0 +1,39 @@
+<app-detail-wrapper [selector]="'location'">
+  <div id="base">
+    <div class="row">
+      <div class="col">
+        <div class="col">
+          <h2>Location Data</h2>
+          <div>
+            <span class="fw-bold">City:</span>
+            <span> {{ speaker?.location?.city }}.</span>
+          </div>
+          <div>
+            <span class="fw-bold">Postcode:</span>
+            <span> {{ speaker?.location?.postcode }}.</span>
+          </div>
+          <div>
+            <span class="fw-bold">Country:</span>
+            <span> {{ speaker?.location?.country }}.</span>
+          </div>
+          <div>
+            <span class="fw-bold">State:</span>
+            <span> {{ speaker?.location?.state }}.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="extra">
+    <hr />
+    <h5>Address Data</h5>
+    <div>
+      <span class="fw-bold">Name:</span>
+      <span> {{ speaker?.location?.street?.name }}.</span>
+    </div>
+    <div>
+      <span class="fw-bold">Number:</span>
+      <span> {{ speaker?.location?.street?.number }}.</span>
+    </div>
+  </div>
+</app-detail-wrapper>
