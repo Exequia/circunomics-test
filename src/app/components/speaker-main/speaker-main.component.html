@@ -19,8 +19,11 @@
           <span> {{ speaker?.name?.last }}.</span>
         </div>
         <div>
-          <span class="fw-bold">Gender:</span>
-          <span> {{ speaker?.gender }}.</span>
+          <span class="fw-bold">Gender: </span>
+          <span
+            class="text-capitalize"
+            [innerHTML]="speaker?.gender | gender"
+          ></span>
         </div>
       </div>
       <div id="extra">
