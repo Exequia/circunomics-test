@@ -1,8 +1,9 @@
 import { createReducer, on } from '@ngrx/store';
-import { setSelectedSpeakerId } from './ui.actions';
+import { setLoading, setSelectedSpeakerId } from './ui.actions';
 
 export interface UiState {
   selectedSpeakerId?: string;
+  isLoading?: boolean;
 }
 
 const initialState: UiState = {};
@@ -12,5 +13,9 @@ export const uiReducer = createReducer(
   on(setSelectedSpeakerId, (state, action) => ({
     ...state,
     selectedSpeakerId: action.speakerId,
+  })),
+  on(setLoading, (state, action) => ({
+    ...state,
+    isLoading: action.isLoading,
   }))
 );

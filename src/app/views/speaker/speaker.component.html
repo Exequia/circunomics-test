@@ -1,3 +1,6 @@
-<p>speaker works!</p>
-<app-speaker-detail></app-speaker-detail>
-speakerId$: {{ speakerId$ | async | json }}
+<h1>Profile</h1>
+<app-speaker-detail [speaker]="speaker$ | async"></app-speaker-detail>
+<hr />
+<button type="button" class="btn btn-secondary" (click)="goBack()">
+  <i class="bi bi-caret-left-fill"></i> Back
+</button>

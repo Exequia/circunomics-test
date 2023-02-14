@@ -52,6 +52,7 @@ export const clearSpeakers = createAction('[Speaker/API] Clear Speakers');
 
 const getSpeakers = '[Speaker/API] Get Speakers API Data';
 export const getSpeakersData = createAction(getSpeakers);
+export const fetchSpeakersData = createAction(`${getSpeakers} Fetch`);
 export const getSpeakersDataSuccess = createAction(
   `${getSpeakers} success`,
   props<{ speakers: Speaker[] }>()

@@ -1,2 +1,10 @@
 <h1>Speakers</h1>
 <app-speaker-list [speakers]="speakers$ | async"></app-speaker-list>
+
+<div
+  class="spinner-grow text-secondary"
+  role="status"
+  *ngIf="!!(loading$ | async)"
+>
+  <span class="visually-hidden">Loading...</span>
+</div>

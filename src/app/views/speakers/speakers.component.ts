@@ -6,6 +6,9 @@ import {
   SpeakerState,
 } from 'src/app/store/speakers/speaker.reducer';
 import { SpeakerListComponent } from 'src/app/components/speaker-list/speaker-list.component';
+import { isLoading } from 'src/app/store/ui/ui.selector';
+import { Observable } from 'rxjs';
+import { AppState } from 'src/app/store/app/app.reducer';
 
 @Component({
   selector: 'app-speakers',
@@ -16,6 +19,7 @@ import { SpeakerListComponent } from 'src/app/components/speaker-list/speaker-li
 })
 export class SpeakersComponent {
   speakers$ = this.store.select(selectSpeakersAll);
+  loading$: Observable<boolean> = this.store.select(isLoading);
 
-  constructor(private readonly store: Store<SpeakerState>) {}
+  constructor(private readonly store: Store<AppState>) {}
 }

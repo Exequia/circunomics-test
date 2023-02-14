@@ -51,8 +51,6 @@ export const speakerReducer = createReducer(
 );
 
 export const {
-  selectIds,
   selectEntities: selectSpeakersEntities,
   selectAll: selectSpeakersAll,
-  selectTotal,
 } = speakerAdapter.getSelectors(selectGamePlayerState);

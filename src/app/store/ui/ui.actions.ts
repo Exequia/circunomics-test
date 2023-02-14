@@ -8,3 +8,7 @@ export const setSelectedSpeakerId = createAction(
   '[UI] Set Selected Speaker',
   props<{ speakerId: string }>()
 );
+export const setLoading = createAction(
+  '[UI] Set Loading',
+  props<{ isLoading: boolean }>()
+);
