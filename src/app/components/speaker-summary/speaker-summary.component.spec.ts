@@ -1,4 +1,7 @@
+import { NgOptimizedImage } from '@angular/common';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { provideMockStore } from '@ngrx/store/testing';
+import { initialStateMock } from 'src/mocks/state.mock';
 
 import { SpeakerSummaryComponent } from './speaker-summary.component';
 
@@ -8,9 +11,9 @@ describe('SpeakerSummaryComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ SpeakerSummaryComponent ]
-    })
-    .compileComponents();
+      imports: [SpeakerSummaryComponent, NgOptimizedImage],
+      providers: [provideMockStore({ initialState: initialStateMock })],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(SpeakerSummaryComponent);
     component = fixture.componentInstance;

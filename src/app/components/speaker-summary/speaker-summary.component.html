@@ -1,6 +1,12 @@
 <div class="card text-bg-light mb-3" (click)="select()">
   <div class="card-header">
-    <img [ngSrc]="getImgSrc()" width="50" height="50" class="img-thumbnail" />
+    <img
+      *ngIf="speaker?.picture?.thumbnail"
+      [ngSrc]="getImgSrc()"
+      width="50"
+      height="50"
+      class="img-thumbnail"
+    />
     {{ getFullName() }}
   </div>
   <div class="card-body">
@@ -10,7 +16,6 @@
           <span class="fw-bold">Age:</span>
           <span> {{ speaker?.dob?.age }}</span>
         </div>
-        <!-- <div class="col">Gender: {{ speaker?.gender }}</div> -->
         <div class="col">
           <i class="bi bi-phone-fill"></i> {{ speaker?.cell }}
         </div>
