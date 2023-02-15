@@ -1,0 +1,70 @@
+<div class="alert alert-info">
+  <form [formGroup]="filterForm">
+    <div class="row">
+      <div class="col-lg-3 col-md-6 col-sm-12">
+        <label for="gender">Gender:</label>
+        <select
+          id="gender"
+          class="form-select"
+          aria-label="Gender select"
+          formControlName="gender"
+        >
+          <option value="null">Any</option>
+          <option
+            *ngFor="let genderOption of genderOptions"
+            [value]="genderOption"
+            class="text-capitalize"
+          >
+            {{ genderOption }}
+          </option>
+        </select>
+      </div>
+      <div class="col-lg-3 col-md-6 col-sm-12">
+        <label for="first-name">First Name: </label>
+        <input
+          class="form-control"
+          id="first-name"
+          type="text"
+          aria-label="default input example"
+          formControlName="firstName"
+        />
+      </div>
+      <div class="col-lg-3 col-md-6 col-sm-12">
+        <label for="city">Country:</label>
+        <select
+          id="country"
+          class="form-select"
+          aria-label="country select"
+          formControlName="country"
+        >
+          <option value="null">Any</option>
+          <option
+            *ngFor="let countryOption of countryOptions"
+            [value]="countryOption"
+            class="text-capitalize"
+          >
+            {{ countryOption }}
+          </option>
+        </select>
+      </div>
+      <div class="col-lg-3 col-md-6 col-sm-12">
+        <label for="city">City:</label>
+        <select
+          id="city"
+          class="form-select"
+          aria-label="City select"
+          formControlName="city"
+        >
+          <option value="null">Any</option>
+          <option
+            *ngFor="let cityOption of cityOptions"
+            [value]="cityOption"
+            class="text-capitalize"
+          >
+            {{ cityOption }}
+          </option>
+        </select>
+      </div>
+    </div>
+  </form>
+</div>
