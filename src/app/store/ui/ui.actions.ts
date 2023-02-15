@@ -22,3 +22,7 @@ export const setFilterSpeakers = createAction(
   '[UI] Set Filter Speakers',
   props<{ filterSpeakers: Speaker[] }>()
 );
+export const setCurrentPageNumber = createAction(
+  '[UI] Set Current Page Number',
+  props<{ page: number }>()
+);

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, Location } from '@angular/common';
 import { SpeakerDetailComponent } from 'src/app/components/speaker-detail/speaker-detail.component';
 import { Store } from '@ngrx/store';
 import { selectSpeakerId } from 'src/app/store/ui/ui.selector';
@@ -7,7 +7,6 @@ import { AppState } from 'src/app/store/app/app.reducer';
 import { take, filter, Observable } from 'rxjs';
 import { selectSpeakerById } from 'src/app/store/speakers/speaker.selectors';
 import { Speaker } from 'src/app/store/speakers/speaker.model';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-speaker',
@@ -21,7 +20,7 @@ export class SpeakerComponent implements OnInit {
 
   constructor(
     private readonly store: Store<AppState>,
-    private readonly router: Router
+    private readonly location: Location
   ) {}
 
   ngOnInit() {
@@ -38,6 +37,6 @@ export class SpeakerComponent implements OnInit {
   }
 
   goBack() {
-    this.router.navigate(['/']);
+    this.location.back();
   }
 }
