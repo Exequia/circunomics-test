@@ -8,6 +8,4 @@ import { SpeakerState } from './store/speakers/speaker.reducer';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
-  title = 'circunomics-test';
-}
+export class AppComponent {}
