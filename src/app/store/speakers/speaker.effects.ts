@@ -5,12 +5,13 @@ import { map, mergeMap, catchError } from 'rxjs/operators';
 import { SpeakerResponse } from 'src/app/models/speaker';
 import { SpeakerUtilsService } from 'src/app/services/speaker-utils.service';
 import { SpeakerService } from 'src/app/services/speaker/speaker.service';
+import { setLoading } from '../ui/ui.actions';
 import {
   addSpeakers,
+  fetchSpeakersData,
   getSpeakersData,
   getSpeakersDataFail,
   getSpeakersDataSuccess,
-  loadSpeakers,
 } from './speaker.actions';
 
 @Injectable()
@@ -18,6 +19,13 @@ export class SpeakerEffects {
   getSpeakersData$ = createEffect(() =>
     this.actions$.pipe(
       ofType(getSpeakersData),
+      mergeMap(() => [setLoading({ isLoading: true }), fetchSpeakersData()])
+    )
+  );
+
+  fetchSpeakersData$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(fetchSpeakersData),
       mergeMap(() =>
         this.speakerService.getSpeakers().pipe(
           map((speakersResponse: SpeakerResponse) => {
@@ -41,19 +49,22 @@ export class SpeakerEffects {
   getSpeakersDataSuccess$ = createEffect(() =>
     this.actions$.pipe(
       ofType(getSpeakersDataSuccess),
-      map((payload) => addSpeakers({ speakers: payload.speakers }))
+      mergeMap((payload) => [
+        addSpeakers({ speakers: payload.speakers }),
+        setLoading({ isLoading: false }),
+      ])
     )
   );
 
-  getSpeakersDataFail$ = createEffect(
-    () =>
-      this.actions$.pipe(
-        ofType(getSpeakersDataFail),
-        map((payload) => console.error(payload.error))
-      ),
-    { dispatch: false }
+  getSpeakersDataFail$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(getSpeakersDataFail),
+      map((payload) => {
+        console.error(payload.error);
+        return setLoading({ isLoading: false });
+      })
+    )
   );
-  //TODO: ARE - DISPATCH TOASTBAR
 
   constructor(
     private readonly actions$: Actions,
