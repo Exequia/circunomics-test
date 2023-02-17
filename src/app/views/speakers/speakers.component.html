@@ -1,5 +1,6 @@
 <h1>Speakers</h1>
-<app-speaker-list [speakers]="speakers$ | async"></app-speaker-list>
+<app-filter-form></app-filter-form>
+<app-speaker-list [speakers]="filterSpeakers$ | async"></app-speaker-list>
 
 <div
   class="spinner-grow text-secondary"
