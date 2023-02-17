@@ -1,5 +1,13 @@
 <div class="list row" *ngIf="speakers">
-  <div class="col-xl-4 col-md-6 col-sm" *ngFor="let speaker of speakers">
+  <div
+    class="col-xl-4 col-md-6 col-sm"
+    *ngFor="
+      let speaker of speakers
+        | paginate : { itemsPerPage: 10, currentPage: p, totalItems: 999 }
+    "
+  >
     <app-speaker-summary [speaker]="speaker"></app-speaker-summary>
   </div>
 </div>
+
+<pagination-controls (pageChange)="getPage($event)"></pagination-controls>

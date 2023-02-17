@@ -2,6 +2,7 @@ import { createReducer, on } from '@ngrx/store';
 import { Filter, FilterForm } from 'src/app/models/filter';
 import { Speaker } from '../speakers/speaker.model';
 import {
+  setCurrentPageNumber,
   setFilterSpeakers,
   setLoading,
   setSelectedSpeakerId,
@@ -13,9 +14,10 @@ export interface UiState {
   isLoading?: boolean;
   filter?: Filter;
   filterSpeakers?: Speaker[];
+  itemsPerPage: number;
 }
 
-const initialState: UiState = {};
+const initialState: UiState = { itemsPerPage: 20 };
 
 export const uiReducer = createReducer(
   initialState,
@@ -34,5 +36,9 @@ export const uiReducer = createReducer(
   on(setFilterSpeakers, (state, action) => ({
     ...state,
     filterSpeakers: action.filterSpeakers,
+  })),
+  on(setCurrentPageNumber, (state, action) => ({
+    ...state,
+    pageNumber: action.page,
   }))
 );

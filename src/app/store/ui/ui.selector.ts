@@ -17,3 +17,7 @@ export const selectFilterSpeakers = createSelector(
   uiFeature,
   (uiState) => uiState?.filterSpeakers
 );
+export const selectItemsPerPage = createSelector(
+  uiFeature,
+  (uiState) => uiState?.itemsPerPage
+);

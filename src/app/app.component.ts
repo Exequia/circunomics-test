@@ -10,8 +10,4 @@ import { SpeakerState } from './store/speakers/speaker.reducer';
 })
 export class AppComponent {
   title = 'circunomics-test';
-
-  constructor(private readonly store: Store<SpeakerState>) {
-    this.store.dispatch(getSpeakersData());
-  }
 }

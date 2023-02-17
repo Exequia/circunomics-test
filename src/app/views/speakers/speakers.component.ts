@@ -3,7 +3,11 @@ import { CommonModule } from '@angular/common';
 import { Store } from '@ngrx/store';
 import { selectSpeakersAll } from 'src/app/store/speakers/speaker.reducer';
 import { SpeakerListComponent } from 'src/app/components/speaker-list/speaker-list.component';
-import { isLoading, selectFilter } from 'src/app/store/ui/ui.selector';
+import {
+  isLoading,
+  selectFilter,
+  selectItemsPerPage,
+} from 'src/app/store/ui/ui.selector';
 import { Observable } from 'rxjs';
 import { AppState } from 'src/app/store/app/app.reducer';
 import { FilterFormComponent } from 'src/app/components/filter-form/filter-form.component';
@@ -23,7 +27,10 @@ export class SpeakersComponent implements OnInit, OnDestroy {
   private speakers$ = this.store.select(selectSpeakersAll);
   filterSpeakers$: Observable<Speaker[]> | undefined;
   loading$: Observable<boolean> = this.store.select(isLoading);
-  filter$: Observable<Filter | undefined> = this.store.select(selectFilter);
+  private filter$: Observable<Filter | undefined> =
+    this.store.select(selectFilter);
+  private itemsPerPage$: Observable<number> =
+    this.store.select(selectItemsPerPage);
   private destroy$: Subject<boolean>;
 
   constructor(private readonly store: Store<AppState>) {
@@ -32,9 +39,9 @@ export class SpeakersComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.filterSpeakers$ = this.store.pipe(
-      withLatestFrom(this.speakers$, this.filter$),
+      withLatestFrom(this.speakers$, this.filter$, this.itemsPerPage$),
       delay(500),
-      map(([_, speakers, filterValues]) => {
+      map(([_, speakers, filterValues, itemsPerPage]) => {
         return (speakers || []).filter(
           (speaker) =>
             this.filterGender(speaker, filterValues?.gender) &&
