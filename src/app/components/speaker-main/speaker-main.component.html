@@ -1,0 +1,40 @@
+<div class="row">
+  <div class="col">
+    <img [ngSrc]="getImgSrc()" width="150" height="150" class="rounded" />
+  </div>
+  <div class="col">
+    <app-detail-wrapper [selector]="'main'">
+      <div id="base">
+        <h2>Personal Data</h2>
+        <div>
+          <span class="fw-bold">Name:</span>
+          <span> {{ speaker?.name?.title }}.</span>
+        </div>
+        <div>
+          <span class="fw-bold">First Name:</span>
+          <span> {{ speaker?.name?.first }}.</span>
+        </div>
+        <div>
+          <span class="fw-bold">Last Name:</span>
+          <span> {{ speaker?.name?.last }}.</span>
+        </div>
+        <div>
+          <span class="fw-bold">Gender:</span>
+          <span> {{ speaker?.gender }}.</span>
+        </div>
+      </div>
+      <div id="extra">
+        <hr />
+        <h5>Date of birth</h5>
+        <div>
+          <span class="fw-bold">date:</span>
+          <span> {{ getDate(speaker?.dob?.date) | date : "yyyy/MM/dd" }}</span>
+        </div>
+        <div>
+          <span class="fw-bold">Age:</span>
+          <span> {{ speaker?.dob?.age }}</span>
+        </div>
+      </div>
+    </app-detail-wrapper>
+  </div>
+</div>

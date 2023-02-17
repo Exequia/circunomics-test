@@ -1,5 +1,19 @@
 <div class="detail" *ngIf="speaker; else elseBlock">
-  <div>speaker: {{ speaker | json }}</div>
+  <div class="alert alert-dark" role="alert">
+    <div class="row">
+      <div class="col">
+        <app-speaker-main [speaker]="speaker"></app-speaker-main>
+      </div>
+    </div>
+    <div class="row mt-5">
+      <div class="col">
+        <app-speaker-location [speaker]="speaker"></app-speaker-location>
+      </div>
+      <div class="col">
+        <app-speaker-contact [speaker]="speaker"></app-speaker-contact>
+      </div>
+    </div>
+  </div>
 </div>
 
 <ng-template #elseBlock>There is no Speaker info to display.</ng-template>

@@ -1,0 +1,20 @@
+<div class="row">
+  <div class="col">
+    <ng-content select="#base"></ng-content>
+  </div>
+  <div class="col-auto">
+    <a
+      class="btn btn-outline-secondary"
+      data-bs-toggle="collapse"
+      [href]="'#extraInfo' + selector"
+      role="button"
+      aria-expanded="false"
+      aria-controls="extraInfo"
+    >
+      <i class="bi bi-eye-fill"></i>
+    </a>
+  </div>
+</div>
+<div class="collapse" [id]="'extraInfo' + selector">
+  <ng-content select="#extra"></ng-content>
+</div>
