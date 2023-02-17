@@ -1,0 +1,31 @@
+<div class="card text-bg-light mb-3" (click)="select()">
+  <div class="card-header">
+    <img [ngSrc]="getImgSrc()" width="50" height="50" class="img-thumbnail" />
+    {{ getFullName() }}
+  </div>
+  <div class="card-body">
+    <div class="card-text">
+      <div class="row">
+        <div class="col">
+          <span class="fw-bold">Age:</span>
+          <span> {{ speaker?.dob?.age }}</span>
+        </div>
+        <!-- <div class="col">Gender: {{ speaker?.gender }}</div> -->
+        <div class="col">
+          <i class="bi bi-phone-fill"></i> {{ speaker?.cell }}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <i class="bi bi-envelope-at-fill"></i> {{ speaker?.email }}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <i class="bi bi-geo-alt-fill"></i> {{ speaker?.location?.city }},
+          {{ speaker?.location?.country }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

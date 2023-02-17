@@ -1,1 +1,5 @@
-<p>speaker-list works!</p>
+<div class="list row" *ngIf="speakers">
+  <div class="col-xl-4 col-md-6 col-sm" *ngFor="let speaker of speakers">
+    <app-speaker-summary [speaker]="speaker"></app-speaker-summary>
+  </div>
+</div>

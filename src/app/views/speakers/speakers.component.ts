@@ -7,26 +7,17 @@ import {
   selectSpeakersEntities,
   SpeakerState,
 } from 'src/app/store/speakers/speaker.reducer';
+import { SpeakerListComponent } from 'src/app/components/speaker-list/speaker-list.component';
 
 @Component({
   selector: 'app-speakers',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, SpeakerListComponent],
   templateUrl: './speakers.component.html',
   styleUrls: ['./speakers.component.scss'],
 })
 export class SpeakersComponent {
-  speakers$ = this.store.select(selectSpeakersEntities);
+  speakers$ = this.store.select(selectSpeakersAll);
 
-  constructor(private readonly store: Store<SpeakerState>) {
-    // this.speakers$?.subscribe((data) => console.log(data));
-    setTimeout(() => {
-      this.store
-        .select(selectSpeakersEntities)
-        ?.subscribe((data) => console.log(data));
-    }, 500);
-    this.store
-      .select(selectSpeakersAll)
-      ?.subscribe((data) => console.log(data));
-  }
+  constructor(private readonly store: Store<SpeakerState>) {}
 }
