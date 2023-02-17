@@ -2,11 +2,12 @@ import { Component, Input } from '@angular/core';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { DetailWrapperComponent } from '../detail-wrapper/detail-wrapper.component';
 import { Speaker } from 'src/app/store/speakers/speaker.model';
+import { GenderPipe } from 'src/app/pipes/gender.pipe';
 
 @Component({
   selector: 'app-speaker-main',
   standalone: true,
-  imports: [CommonModule, DetailWrapperComponent, NgOptimizedImage],
+  imports: [CommonModule, DetailWrapperComponent, NgOptimizedImage, GenderPipe],
   templateUrl: './speaker-main.component.html',
   styleUrls: ['./speaker-main.component.scss'],
 })
