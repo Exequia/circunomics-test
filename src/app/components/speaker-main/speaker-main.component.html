@@ -1,6 +1,12 @@
 <div class="row">
   <div class="col">
-    <img [ngSrc]="getImgSrc()" width="150" height="150" class="rounded" />
+    <img
+      *ngIf="speaker?.picture?.large"
+      [ngSrc]="getImgSrc()"
+      width="150"
+      height="150"
+      class="rounded"
+    />
   </div>
   <div class="col">
     <app-detail-wrapper [selector]="'main'">
@@ -31,7 +37,9 @@
         <h5>Date of birth</h5>
         <div>
           <span class="fw-bold">date:</span>
-          <span> {{ getDate(speaker?.dob?.date) | date : "yyyy/MM/dd" }}</span>
+          <span *ngIf="speaker?.dob?.date">
+            {{ getDate(speaker?.dob?.date) | date : "yyyy/MM/dd" }}</span
+          >
         </div>
         <div>
           <span class="fw-bold">Age:</span>

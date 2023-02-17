@@ -17,10 +17,10 @@ export interface UiState {
   itemsPerPage: number;
 }
 
-const initialState: UiState = { itemsPerPage: 20 };
+export const uiInitialState: UiState = { itemsPerPage: 20 };
 
 export const uiReducer = createReducer(
-  initialState,
+  uiInitialState,
   on(setSelectedSpeakerId, (state, action) => ({
     ...state,
     selectedSpeakerId: action.speakerId,
